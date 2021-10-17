@@ -315,29 +315,26 @@ func UDPRoutine(name string, decodeFunc decoder.DecoderFunc, workers int, addr s
 
 		MetricTrafficBytes.With(
 			prometheus.Labels{
-				"remote_ip":   pktAddr.IP.String(),
-				"remote_port": strconv.Itoa(pktAddr.Port),
-				"local_ip":    localIP,
-				"local_port":  strconv.Itoa(addrUDP.Port),
-				"type":        name,
+				"remote_ip":  pktAddr.IP.String(),
+				"local_ip":   localIP,
+				"local_port": strconv.Itoa(addrUDP.Port),
+				"type":       name,
 			}).
 			Add(float64(size))
 		MetricTrafficPackets.With(
 			prometheus.Labels{
-				"remote_ip":   pktAddr.IP.String(),
-				"remote_port": strconv.Itoa(pktAddr.Port),
-				"local_ip":    localIP,
-				"local_port":  strconv.Itoa(addrUDP.Port),
-				"type":        name,
+				"remote_ip":  pktAddr.IP.String(),
+				"local_ip":   localIP,
+				"local_port": strconv.Itoa(addrUDP.Port),
+				"type":       name,
 			}).
 			Inc()
 		MetricPacketSizeSum.With(
 			prometheus.Labels{
-				"remote_ip":   pktAddr.IP.String(),
-				"remote_port": strconv.Itoa(pktAddr.Port),
-				"local_ip":    localIP,
-				"local_port":  strconv.Itoa(addrUDP.Port),
-				"type":        name,
+				"remote_ip":  pktAddr.IP.String(),
+				"local_ip":   localIP,
+				"local_port": strconv.Itoa(addrUDP.Port),
+				"type":       name,
 			}).
 			Observe(float64(size))
 	}
